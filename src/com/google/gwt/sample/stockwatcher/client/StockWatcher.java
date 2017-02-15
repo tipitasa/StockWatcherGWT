@@ -50,10 +50,14 @@ public class StockWatcher implements EntryPoint {
 	    // Add styles to elements in the stock list table.
 	    stocksFlexTable.getRowFormatter().addStyleName(0, "watchListHeader");
 	    stocksFlexTable.addStyleName("watchList");
+	    stocksFlexTable.getCellFormatter().addStyleName(0, 1, "watchListNumericColumn");
+	    stocksFlexTable.getCellFormatter().addStyleName(0, 2, "watchListNumericColumn");
+	    stocksFlexTable.getCellFormatter().addStyleName(0, 3, "watchListRemoveColumn");
 	    
 	    // Assemble Add Stock panel.
 	    addPanel.add(newSymbolTextBox);
 	    addPanel.add(addStockButton);
+	    addPanel.addStyleName("addPanel");
 
 	    // Assemble Main panel.
 	    mainPanel.add(stocksFlexTable);
@@ -124,6 +128,9 @@ public class StockWatcher implements EntryPoint {
 	      int row = stocksFlexTable.getRowCount();
 	      stocks.add(symbol);
 	      stocksFlexTable.setText(row, 0, symbol);
+	      stocksFlexTable.getCellFormatter().addStyleName(row, 1, "watchListNumericColumn");
+	      stocksFlexTable.getCellFormatter().addStyleName(row, 2, "watchListNumericColumn");
+	      stocksFlexTable.getCellFormatter().addStyleName(row, 3, "watchListRemoveColumn");
 	   
 	      // Add a button to remove this stock from the table.
 	      Button removeStockButton = new Button("x");
